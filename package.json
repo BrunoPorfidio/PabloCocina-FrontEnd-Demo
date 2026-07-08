@@ -21,14 +21,12 @@
     "@angular/forms": "^21.1.0",
     "@angular/platform-browser": "^21.1.0",
     "@stomp/stompjs": "7.0.0",
-    "@tailwindcss/postcss": "^4.3.2",
     "rxjs": "^7.8.2",
-    "sockjs-client": "1.6.1",
-    "tailwindcss": "^4.1.0"
+    "sockjs-client": "1.6.1"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "typescript": "~5.8.2",
+    "@types/node": "^22.15.0",
+    "typescript": "~5.9.2",
     "vite": "^6.2.0"
   }
 }
