@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>PabloCocina - Pedidos Gastronómicos</title>
+    <meta name="description" content="Hacé tu pedido gastronómico en PabloCocina. Platos del día, guarniciones y más. Envío directo a tu mesa o take away." />
+    <meta name="theme-color" content="#0d1117" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- CSP: Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://esm.sh https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' http://localhost:8080 https://api.cloudinary.com; frame-src 'none';" />
+
+    <!-- CRITICAL POLYFILL: Fixes "Uncaught ReferenceError: global is not defined" from sockjs-client -->
+    <script>
+      if (typeof global === 'undefined') {
+        window.global = window;
+      }
+    </script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://esm.sh">
+    <link rel="preconnect" href="https://picsum.photos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Tailwind CSS v3 via CDN (cdn.tailwindcss.com redirects to 3.4.x) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Playfair Display', 'serif'] },
+            colors: { 'gray-750': '#2d3748', 'gray-850': '#1a202c', 'gray-950': '#0d1117' }
+          }
+        }
+      }
+    </script>
+
+    <!-- Fonts: Inter + Playfair Display for personality -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700&display=swap" media="print" onload="this.media='all'" />
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+    <link rel="apple-touch-icon" href="/src/assets/logo.png" />
+  <script type="importmap">
+{
+  "imports": {
+    "rxjs": "https://esm.sh/rxjs@^7.8.2?conditions=es2015",
+    "rxjs/operators": "https://esm.sh/rxjs@^7.8.2/operators?conditions=es2015",
+    "rxjs/ajax": "https://esm.sh/rxjs@^7.8.2/ajax?conditions=es2015",
+    "rxjs/webSocket": "https://esm.sh/rxjs@^7.8.2/webSocket?conditions=es2015",
+    "rxjs/testing": "https://esm.sh/rxjs@^7.8.2/testing?conditions=es2015",
+    "rxjs/fetch": "https://esm.sh/rxjs@^7.8.2/fetch?conditions=es2015",
+    "@angular/forms": "https://esm.sh/@angular/forms@^21.1.0?external=rxjs",
+    "@angular/platform-browser": "https://esm.sh/@angular/platform-browser@^21.1.0?external=rxjs",
+    "@angular/compiler": "https://esm.sh/@angular/compiler@^21.1.0?external=rxjs",
+    "@angular/common": "https://esm.sh/@angular/common@^21.1.0?external=rxjs",
+    "@angular/core": "https://esm.sh/@angular/core@^21.1.0?external=rxjs",
+    "@angular/common/http": "https://esm.sh/@angular/common@^21.1.1/http?external=rxjs",
+    "@angular/core/rxjs-interop": "https://esm.sh/@angular/core@^21.1.1/rxjs-interop?external=rxjs",
+    "@stomp/stompjs": "https://esm.sh/@stomp/stompjs@7.0.0",
+    "sockjs-client": "https://esm.sh/sockjs-client@1.6.1",
+    "@angular/core/": "https://esm.sh/@angular/core@^21.1.5/",
+    "@angular/common/": "https://esm.sh/@angular/common@^21.1.5/"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans antialiased">
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <app-root></app-root>
+  </body>
+</html>

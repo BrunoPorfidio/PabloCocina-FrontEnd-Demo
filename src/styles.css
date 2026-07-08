@@ -1,0 +1,212 @@
+
+/* 
+  Tailwind v3 via CDN script (index.html) — build-time PostCSS not compatible
+  with Angular 21's internal build pipeline. Custom theme config (including
+  darkMode: 'class') is in the tailwind.config script block inside index.html.
+*/
+
+/* CSS custom properties for theme values used in custom animations */
+:root {
+  --font-sans: 'Inter', 'system-ui', 'sans-serif';
+  --gray-950: #0d1117;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* New Order Animation */
+@keyframes pop-in {
+  0% { 
+      transform: scale(0.8); 
+      opacity: 0; 
+      box-shadow: 0 0 0 rgba(255, 159, 67, 0);
+  }
+  50% { 
+      transform: scale(1.05); 
+      opacity: 1; 
+      box-shadow: 0 0 20px rgba(255, 159, 67, 0.6);
+  }
+  100% { 
+      transform: scale(1); 
+      opacity: 1; 
+      box-shadow: 0 0 0 rgba(255, 159, 67, 0);
+  }
+}
+
+@keyframes border-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-pop-in {
+  /* Use 'both' to ensure initial state (opacity 0) is applied before animation starts if there's any delay */
+  animation: pop-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) both; 
+  transform-origin: center center;
+  will-change: transform, opacity, box-shadow;
+}
+
+.new-order-highlight {
+  outline: 3px solid #ffffff;
+  outline-offset: -3px;
+  border-color: transparent !important;
+}
+
+.dark .new-order-highlight {
+  outline: 3px solid #374151;
+  outline-offset: -3px;
+}
+
+/* View Transition Animation */
+.view-transition {
+  animation: view-fade-in 0.3s ease-out;
+}
+
+@keyframes view-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-in animation for drawers and panels */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+/* Short bounce animation (for dish of the day icon) */
+@keyframes bounce-short {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-6px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-3px); }
+}
+
+.animate-bounce-short {
+  animation: bounce-short 1s ease-in-out 3;
+}
+
+/* Slide down animation (for mobile menu) */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.2s ease-out;
+}
+
+/* Skeleton loading pulse */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-skeleton-pulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+/* Ensure touch targets are at least 44px on mobile */
+@media (max-width: 640px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Overscroll containment for modals/drawers */
+.overscroll-contain {
+  overscroll-behavior: contain;
+}
+
+/* Smooth scroll snap for category nav */
+.snap-x {
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Skip-to-content link (visually hidden until focused) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 1000;
+  padding: 8px 16px;
+  background: #ea580c;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: top 0.1s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* Consistent focus-visible ring for interactive elements */
+*:focus-visible {
+  outline: 2px solid #ea580c;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default outline for mouse clicks but keep for keyboard */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

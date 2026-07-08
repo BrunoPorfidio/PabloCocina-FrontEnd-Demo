@@ -1,0 +1,5 @@
+{
+  "name": "PabloCocina App",
+  "description": "Aplicación de pedidos gastronómicos con integración directa a WhatsApp, gestión de carrito y cálculo de variantes.",
+  "requestFramePermissions": []
+}

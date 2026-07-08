@@ -1,0 +1,34 @@
+{
+  "name": "pablococina-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "ng serve",
+    "build": "ng build",
+    "preview": "ng serve --configuration=production",
+    "test": "ng test",
+    "build:watch": "ng build --watch --configuration development",
+    "lint": "ng lint"
+  },
+  "dependencies": {
+    "@angular/build": "^21.1.0",
+    "@angular/cli": "^21.1.0",
+    "@angular/common": "^21.1.0",
+    "@angular/compiler": "^21.1.0",
+    "@angular/compiler-cli": "^21.1.0",
+    "@angular/core": "^21.1.0",
+    "@angular/forms": "^21.1.0",
+    "@angular/platform-browser": "^21.1.0",
+    "@stomp/stompjs": "7.0.0",
+    "@tailwindcss/postcss": "^4.3.2",
+    "rxjs": "^7.8.2",
+    "sockjs-client": "1.6.1",
+    "tailwindcss": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}
