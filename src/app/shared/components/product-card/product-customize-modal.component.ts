@@ -17,11 +17,11 @@ import { ToastService } from '../../../core/services/toast.service';
         <label class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-2">
           Elige tu guarnición:
         </label>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           @for (g of product().garnishes; track g.id) {
             @if(g.active) {
               <label
-                class="text-xs px-2 py-2 rounded-lg border transition-colors select-none flex items-center gap-1.5 w-full h-auto min-h-[36px] cursor-pointer"
+                class="text-xs px-2 py-3 sm:py-2 rounded-lg border transition-colors select-none flex flex-col items-center justify-center gap-0.5 w-full h-auto min-h-[44px] cursor-pointer"
                 [class.bg-orange-100]="isGarnishSelected(g)"
                 [class.dark:bg-orange-900]="isGarnishSelected(g)"
                 [class.border-orange-500]="isGarnishSelected(g)"
@@ -34,9 +34,9 @@ import { ToastService } from '../../../core/services/toast.service';
                 [class.hover:border-orange-300]="!isGarnishSelected(g)"
               >
                 <input type="checkbox" [checked]="isGarnishSelected(g)" (change)="toggleGarnish(g)" class="hidden">
-                <span class="whitespace-normal text-center leading-tight break-words flex-1">{{ g.name }}</span>
+                <span class="truncate text-center leading-tight w-full" [title]="g.name">{{ g.name }}</span>
                 @if (isGarnishSelected(g)) {
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
                 }
               </label>
             }
@@ -51,11 +51,11 @@ import { ToastService } from '../../../core/services/toast.service';
         <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">
           Adicionales:
         </label>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           @for (add of activeAdditionals(); track add.id) {
             <button
               (click)="toggleAdditional(add)"
-              class="text-xs px-2 py-2 rounded-lg border transition-colors select-none flex items-center justify-center gap-1 w-full h-auto min-h-[36px]"
+              class="text-xs px-2 py-3 sm:py-2 rounded-lg border transition-colors select-none flex flex-col items-center justify-center gap-0.5 w-full h-auto min-h-[44px]"
               [class.bg-orange-100]="isAdditionalSelected(add)"
               [class.dark:bg-orange-900]="isAdditionalSelected(add)"
               [class.border-orange-500]="isAdditionalSelected(add)"
@@ -67,13 +67,15 @@ import { ToastService } from '../../../core/services/toast.service';
               [class.dark:text-gray-300]="!isAdditionalSelected(add)"
               [class.hover:border-orange-300]="!isAdditionalSelected(add)"
             >
-              <span class="whitespace-normal text-center leading-tight break-words">{{ add.name }}</span>
-              @if (add.price > 0) {
-                <span class="opacity-75 font-semibold whitespace-nowrap ml-1">+\${{add.price}}</span>
-              }
-              @if (isAdditionalSelected(add)) {
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 ml-1"><polyline points="20 6 9 17 4 12"/></svg>
-              }
+              <span class="truncate text-center leading-tight w-full" [title]="add.name">{{ add.name }}</span>
+              <span class="flex items-center gap-1">
+                @if (add.price > 0) {
+                  <span class="opacity-75 font-semibold whitespace-nowrap">+\${{add.price}}</span>
+                }
+                @if (isAdditionalSelected(add)) {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                }
+              </span>
             </button>
           }
         </div>
