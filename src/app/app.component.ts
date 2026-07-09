@@ -44,9 +44,9 @@ import { API_CONFIG } from './core/config/api.config';
 
     <div class="min-h-screen flex flex-col print:hidden bg-gray-50 dark:bg-gray-950">
       
-      @if (!auth.isAdmin() && ui.currentView() !== 'profile' && !schedule.isTodayHoliday()) {
+      @if (!auth.isAdmin() && ui.currentView() !== 'profile' && schedule.isTodayHoliday()) {
         <div class="bg-gray-900 text-white text-center py-2 text-xs font-bold uppercase tracking-wider">
-           ⏰ Se toman pedidos hasta las 11 AM
+           🎉 Hoy estamos cerrados por feriado
         </div>
       }
 
